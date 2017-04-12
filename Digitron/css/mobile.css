@@ -1,2 +1,30 @@
-﻿body {
+﻿/*Most mobile phones*/
+@media only screen and (max-width: 40em) {
+    #bck-img1.wrapper-half-left::before, 
+    #bck-img2.wrapper-half-right::before,
+     #bck-img3.wrapper-half-left::before {
+        background-image: none;
+        background-size: auto;
+    }
+
+    #bck-img1, #bck-img2, #bck-img3 {
+        height: auto;
+    }
 }
+/* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) {
+  #bck-img1.wrapper-half-left::before, 
+    #bck-img2.wrapper-half-right::before,
+     #bck-img3.wrapper-half-left::before {
+        background-image: none;
+        background-size: auto;
+    }
+
+   #bck-img1.wrapper,  #bck-img2.wrapper,#bck-img3.wrapper{
+       padding:0;
+   } 
+   #bck-img1>p strong, #bck-img2>p strong, #bck-img3>p strong{
+       font-size:60pt;
+   }
+} /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
