@@ -361,7 +361,7 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <!-- The contact form -->
-                    <form action="http://templatedeck.com/demos/poncho1021/php/contact.php" method="post" role="form" data-toggle="validator" class="form-contact  wow fadeInUp">
+                    <form name="contact-form" role="form" data-toggle="validator" class="form-contact  wow fadeInUp">
 
                         <div class="form-group">
                             <label for="inputName" class="control-label">Name</label>
@@ -370,8 +370,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputLastName" class="control-label">Email</label>
-                            <input type="email" name="email" class="form-control" required><br>
+                            <label for="inputLastName" class="control-label">Phone</label>
+                            <input type="text" name="phone" class="form-control" required><br>
                             <div class="help-block with-errors"></div>
                         </div>
 
@@ -490,7 +490,29 @@
         })
         //]]>
 
+        //post form
+        $(function () {
+            $('form[name=contact-form]').submit(function (e) {
+                e.preventDefault();
 
+                var _data = {
+                    name: $("input[name=name]"),
+                    phone: $("input[name=phone]"),
+                    message: $("input[name=message]"),
+                }
+
+                $.ajax({
+                    url: 'api/message',
+                    type: 'POST',
+                    data: _data
+                }).done(function () {
+                    alert("your message has been sent.")
+                }).fail(function (error) {
+                    alert('unable to send message');
+                    console.log(error);
+                })
+            })
+        })
     </script>
 
     <style>
